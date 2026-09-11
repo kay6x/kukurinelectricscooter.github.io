@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KuKirin G4 Electric Scooter – Test</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+/* TEST-HINWEIS */
+.test-banner {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 7px;
+  font-size: 12px;
+}
+
+/* HEADER */
+header {
+  height: 76px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+.logo-icon {
+  color: #ff6500;
+  font-size: 28px;
+}
+
+.logo span {
+  color: #ff6500;
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+
+nav a {
+  color: #222;
+  text-decoration: none;
+}
+
+.cart {
+  font-size: 14px;
+}
+
+/* PRODUKT */
+.product {
+  max-width: 1250px;
+  margin: 45px auto;
+  padding: 0 25px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+}
+
+/* GALERIE */
+.gallery {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 14px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumb {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: #f7f7f7;
+}
+
+.thumb:hover {
+  border: 2px solid #111;
+}
+
+.main-image-box {
+  background: #f5f5f5;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+  object-fit: contain;
+}
+
+/* PRODUKT INFOS */
+.product-info {
+  padding-top: 10px;
+}
+
+.version {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 39px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* SPECS */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 28px;
+}
+
+.spec {
+  text-align: center;
+  padding: 18px 5px;
+  border-right: 1px solid #ddd;
+}
+
+.spec:last-child {
+  border-right: none;
+}
+
+.spec strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.spec span {
+  color: #777;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* BESTELLEN */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.quantity input {
+  width: 65px;
+  padding: 13px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.order-button {
+  width: 100%;
+  border: none;
+  background: #111;
+  color: white;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.order-button:hover {
+  background: #ff6500;
+}
+
+/* FEATURES */
+.features {
+  max-width: 1150px;
+  margin: 70px auto;
+  padding: 0 25px;
+}
+
+.features h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.feature {
+  padding: 25px;
+  background: #f7f7f7;
+}
+
+.feature strong {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* WEITERE BILDER */
+.details {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 25px;
+}
+
+.details h2 {
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.detail-grid img {
+  width: 100%;
+  display: block;
+  background: #f5f5f5;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 35px;
+  margin-top: 80px;
+  font-size: 13px;
+}
+
+.footer-warning {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+
+  nav {
+    display: none;
+  }
+
+  .product {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main-image-box {
+    min-height: 450px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbnails {
+    order: 2;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .thumb {
+    min-width: 70px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .specs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spec:nth-child(2) {
+    border-right: none;
+  }
+
+  .spec:nth-child(3) {
+    border-top: 1px solid #ddd;
+  }
+
+  .spec:nth-child(4) {
+    border-top: 1px solid #ddd;
+    border-right: none;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Klarer Hinweis für den Test -->
+<div class="test-banner">
+  offiziele Kogoo EU-Website
+</div>
+
+
+<header>
+
+  <!-- LOGO OBEN LINKS -->
+  <div class="logo">
+    <div class="logo">
+  Kugoo <span>Kirin</span>
+</div>
+
+ 
+
+  
+
+</header>
+
+
+<main>
+
+<section class="product">
+
+
+<!-- =========================
+     BILDERGALERIE
+========================= -->
+
+<div class="gallery">
+
+  <div class="thumbnails">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4_92e3d1bc-32da-46ef-a374-edb53a23be1b.jpg?v=1787886455&width=1200">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_6.jpg?v=1777451524&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_5.jpg?v=1777451523&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_8.jpg?v=1777451525&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_1.jpg?v=1777451520&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_10.jpg?v=1777451527&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_7.jpg?v=1777451525&width=1000">
+
+    <img class="thumb"
+      onclick="changeImage(this.src)"
+      src="https://kugoo.eu/cdn/shop/files/G4-2026_Version.jpg?v=1775817730&width=1000">
+
+  </div>
+
+
+  <div class="main-image-box">
+
+    <img
+      id="mainImage"
+      class="main-image"
+      src="https://kugoo.eu/cdn/shop/files/G4_92e3d1bc-32da-46ef-a374-edb53a23be1b.jpg?v=1787886455&width=1200"
+      alt="KuKirin G4">
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     PRODUKT INFORMATIONEN
+========================= -->
+
+<div class="product-info">
+
+  <div class="version">
+    2026 Version
+  </div>
+
+  <h1>
+    KuKirin G4 Electric Scooter
+  </h1>
+
+  <div class="price">
+    €859,00
+  </div>
+
+  <p class="description">
+    KuKirin G4 mit leistungsstarkem Motor, großem Akku
+    und robusten Off-Road-Reifen.
+  </p>
+
+
+  <div class="specs">
+
+    <div class="spec">
+      <strong>25 KPH</strong>
+      <span>Top Speed</span>
+    </div>
+
+    <div class="spec">
+      <strong>75 KM</strong>
+      <span>Max Range</span>
+    </div>
+
+    <div class="spec">
+      <strong>2000 W</strong>
+      <span>Motor</span>
+    </div>
+
+    <div class="spec">
+      <strong>20 Ah</strong>
+      <span>Battery</span>
+    </div>
+
+  </div>
+
+
+  <div class="quantity">
+
+    <label for="quantity">
+      Menge:
+    </label>
+
+    <input
+      id="quantity"
+      type="number"
+      value="1"
+      min="1">
+
+  </div>
+
+
+  <!--
+    ECHTER SHOP-CHECKOUT / WARENKORB
+    Öffnet den echten Shop.
+  -->
+
+  <button
+    class="order-button"
+    onclick="window.location.href='https://kugoo.eu/cart/47274009362583:1'">
+
+    BESTELLEN
+
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     HIGHLIGHTS
+========================= -->
+
+<section class="features">
+
+  <h2>
+    KuKirin G4 Highlights
+  </h2>
+
+  <div class="feature-grid">
+
+    <div class="feature">
+      <strong>25 km/h</strong>
+      <p>Maximale Geschwindigkeit</p>
+    </div>
+
+    <div class="feature">
+      <strong>75 km</strong>
+      <p>Reichweite pro Ladung</p>
+    </div>
+
+    <div class="feature">
+      <strong>2000 W</strong>
+      <p>Leistungsstarker Motor</p>
+    </div>
+
+    <div class="feature">
+      <strong>11"</strong>
+      <p>Off-Road Reifen</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WEITERE G4 BILDER
+========================= -->
+
+<section class="details">
+
+  <h2>
+    KuKirin G4
+  </h2>
+
+  <div class="detail-grid">
+
+
+    <img
+      src="https://ucarecdn.com/ad84eda5-d995-45b6-b67e-09860231fb8d/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-26-A2.jpg"
+      alt="KuKirin G4">
+
+    <img
+      src="https://ucarecdn.com/0e5c774e-9ee3-4c34-b458-3db995218b02/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-A43-1.jpg"
+      alt="KuKirin G4 Details">
+
+    <img
+      src="https://ucarecdn.com/f720e504-41dd-41bb-98b6-0638d7a8d7e4/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-B4.jpg"
+      alt="KuKirin G4 Speed">
+
+    <img
+      src="https://ucarecdn.com/4deb16ed-e4d8-483c-8e52-0cbebcdf2103/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-B5.jpg"
+      alt="KuKirin G4">
+
+    <img
+      src="https://ucarecdn.com/5df4d9ec-7ff8-4f7e-80fe-7625ca261bbd/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-A6.jpg"
+      alt="KuKirin G4 Riding">
+
+    <img
+      src="https://ucarecdn.com/ee9c0b65-7dd8-477e-953a-33e72a40784b/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-A11.jpg"
+      alt="KuKirin G4 Off Road">
+
+    <img
+      src="https://ucarecdn.com/12dd533d-3386-4e43-89ff-eb6882bd99f7/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-A9.jpg"
+      alt="KuKirin G4 Details">
+
+    <img
+      src="https://ucarecdn.com/1a299ced-91f7-4765-860d-27b374289939/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-A10.jpg"
+      alt="KuKirin G4 Dimensions">
+
+    <img
+      src="https://ucarecdn.com/6a51b2c3-8c80-464f-8324-894a047abf0a/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-B15-1.jpg"
+      alt="KuKirin G4 Front">
+
+    <img
+      src="https://ucarecdn.com/5a6d96dc-8d46-4c18-9da0-527934b5e9f3/-/format/auto/-/preview/3000x3000/-/quality/lighter/G4-B15-2.jpg"
+      alt="KuKirin G4 Side">
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+  <div class="footer-warning">
+    Kukurin G4 Electric Scooter |  KugooEU-Seite
+  </div>
+
+  
+
+</footer>
+
+
+<script>
+
+/* Galerie */
+
+function changeImage(src) {
+
+  document.getElementById("mainImage").src = src;
+
+}
+
+</script>
+
+</body>
+</html>
